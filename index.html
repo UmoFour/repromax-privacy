@@ -120,14 +120,75 @@
             font-size: 0.9em;
         }
         @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
             .container {
-                padding: 20px;
+                padding: 20px 15px;
+                border-radius: 8px;
             }
             h1 {
-                font-size: 1.5em;
+                font-size: 1.4em;
+                word-break: keep-word;
+            }
+            h2 {
+                font-size: 1.15em;
+                padding-left: 12px;
+                margin-top: 25px;
+            }
+            h3 {
+                font-size: 1em;
             }
             table {
-                font-size: 0.9em;
+                font-size: 0.85em;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+                margin: 15px -15px;
+                width: calc(100% + 30px);
+            }
+            th, td {
+                padding: 10px 12px;
+            }
+            .contact-box, .warning-box, .info-box {
+                padding: 12px;
+                margin: 15px 0;
+                border-radius: 4px;
+            }
+            ul {
+                margin: 12px 0 12px 20px;
+                padding-left: 5px;
+            }
+            li {
+                margin: 6px 0;
+            }
+            .check, .cross {
+                font-size: 1em;
+            }
+            .update-date {
+                font-size: 0.85em;
+            }
+            .footer {
+                margin-top: 30px;
+                padding-top: 15px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .container {
+                padding: 15px 12px;
+            }
+            h1 {
+                font-size: 1.25em;
+            }
+            h2 {
+                font-size: 1.05em;
+                padding-left: 10px;
+            }
+            table {
+                font-size: 0.8em;
+                margin: 15px -12px;
+                width: calc(100% + 24px);
             }
             th, td {
                 padding: 8px 10px;
@@ -208,7 +269,7 @@
             <li><span class="cross">❌</span> Información financiera</li>
             <li><span class="cross">❌</span> Datos de salud</li>
             <li><span class="cross">❌</span> Imágenes o videos del usuario (solo contenido multimedia reproducido)</li>
-            <li><span class="cross">❌</span> Grabaciones de audio</li>
+            <li><span class="cross">❌</span> <strong>Grabaciones de audio</strong> - El control por voz solo transcribe a texto en tiempo real, NO guarda audios</li>
             <li><span class="cross">❌</span> Información demográfica más allá de lo indicado en el perfil</li>
         </ul>
 
@@ -233,11 +294,23 @@
             </tbody>
         </table>
 
-        <p><strong>Nota:</strong> Repromax <strong>NO</strong> solicita permisos para:</p>
+        <h3>3.1. Control por Voz</h3>
+        <p>Repromax incluye funcionalidad de <strong>control por voz</strong> exclusivamente para dictado de texto en campos de búsqueda:</p>
+        <ul>
+            <li><strong>Permiso:</strong> <code>RECORD_AUDIO</code> - Solicitado solo cuando el usuario activa el micrófono</li>
+            <li><strong>Finalidad:</strong> Transcribir voz a texto para búsquedas dentro de la aplicación</li>
+            <li><strong>Almacenamiento:</strong> <strong>NO se guardan ni registran los audios</strong> en ningún momento</li>
+            <li><strong>Procesamiento:</strong> La transcripción se realiza en tiempo real y solo se utiliza el texto resultante</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>🎤 Política de audio:</strong> Repromax NO almacena, transmite ni guarda grabaciones de audio. El audio se procesa localmente en el dispositivo para transcripción a texto y se descarta inmediatamente.
+        </div>
+
+        <p><strong>Nota:</strong> Además de <code>RECORD_AUDIO</code> para control por voz, Repromax <strong>NO</strong> solicita permisos para:</p>
         <ul>
             <li><span class="cross">❌</span> Ubicación (GPS)</li>
             <li><span class="cross">❌</span> Cámara</li>
-            <li><span class="cross">❌</span> Micrófono</li>
             <li><span class="cross">❌</span> Contactos</li>
             <li><span class="cross">❌</span> Almacenamiento externo</li>
         </ul>
@@ -286,7 +359,7 @@
         <p><strong>Los datos personales nunca salen del dispositivo del usuario.</strong> La aplicación no transmite datos personales a servidores externos, salvo lo estrictamente necesario para autenticación con el proveedor de contenido cuando este lo requiera.</p>
 
         <h3>6.2. Servidores y CDN</h3>
-        <p>Repromax se conecta exclusivamente para obtener contenido multimedia a los servidores configurados por el proveedor seleccionado. La aplicación <strong>NO almacena</strong> datos personales del usuario en servidores externos a la infraestructura del proveedor.</p>
+        <p>Repromax se conecta exclusivamente para obtener contenido multimedia a los servidores configurados por el proveedor seleccionado. La aplicación <strong>NO almacena</strong> datos personales del usuario en servidores externos.</p>
 
         <h2>7. Seguridad de Datos</h2>
         <table>
@@ -519,7 +592,7 @@
         </ul>
 
         <div class="footer">
-            <p><strong>Versión:</strong> 2.1 | <strong>Fecha de entrada en vigor:</strong> 9 de junio de 2026</p>
+            <p><strong>Versión:</strong> 2.3 | <strong>Fecha de entrada en vigor:</strong> 9 de junio de 2026</p>
         </div>
     </div>
 </body>
