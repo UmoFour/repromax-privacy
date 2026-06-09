@@ -86,9 +86,24 @@
         .cross {
             color: #e74c3c;
         }
+        .warning {
+            color: #f39c12;
+        }
         .contact-box {
             background: #f8f9fa;
             border-left: 4px solid #e94560;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        .info-box {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
             padding: 15px;
             margin: 20px 0;
         }
@@ -132,6 +147,8 @@
         <h2>1. Información General</h2>
         <p><strong>Repromax</strong> es una aplicación de reproducción de contenido multimedia (streaming de video y audio) desarrollada por <strong>UmoFour</strong>. Esta política describe cómo Repromax recopila, utiliza y protege la información de sus usuarios.</p>
 
+        <p><strong>Modelo de funcionamiento:</strong> Repromax es una plataforma reproductora que se conecta a diferentes proveedores de contenido. La aplicación actúa como intermediario técnico entre el usuario y los servicios de contenido contratados.</p>
+
         <h2>2. Datos que Recopilamos</h2>
 
         <h3>2.1. Datos Recopilados</h3>
@@ -152,7 +169,7 @@
                 </tr>
                 <tr>
                     <td><strong>Perfiles de Usuario</strong></td>
-                    <td>Nombre, avatar, estado (invitado/bloqueado)</td>
+                    <td>Nombre, avatar, edad (si aplica), estado (invitado/bloqueado)</td>
                     <td>Personalización de la experiencia de usuario</td>
                 </tr>
                 <tr>
@@ -192,7 +209,7 @@
             <li><span class="cross">❌</span> Datos de salud</li>
             <li><span class="cross">❌</span> Imágenes o videos del usuario (solo contenido multimedia reproducido)</li>
             <li><span class="cross">❌</span> Grabaciones de audio</li>
-            <li><span class="cross">❌</span> Información demográfica</li>
+            <li><span class="cross">❌</span> Información demográfica más allá de lo indicado en el perfil</li>
         </ul>
 
         <h2>3. Permisos Solicitados</h2>
@@ -207,7 +224,7 @@
             <tbody>
                 <tr>
                     <td><code>INTERNET</code></td>
-                    <td>Acceder al contenido multimedia streaming desde los servidores</td>
+                    <td>Acceder al contenido multimedia streaming desde los servidores del proveedor</td>
                 </tr>
                 <tr>
                     <td><code>ACCESS_NETWORK_STATE</code></td>
@@ -225,7 +242,31 @@
             <li><span class="cross">❌</span> Almacenamiento externo</li>
         </ul>
 
-        <h2>4. Uso de la Información</h2>
+        <h2>4. Modelo de Proveedores de Contenido</h2>
+
+        <div class="info-box">
+            <strong>⚙️ Arquitectura de Repromax:</strong> La aplicación se conecta a diferentes proveedores de contenido configurados por el usuario. La infraestructura de cada proveedor es independiente y responsabilidad exclusiva del mismo.
+        </div>
+
+        <h3>4.1. Conexión a Servicios Externos</h3>
+        <p>Repromax funciona como un cliente reproductor que se conecta a servicios de terceros:</p>
+        <ul>
+            <li><strong>API de contenido:</strong> La URL de la API se configura en tiempo de ejecución según el proveedor seleccionado por el usuario</li>
+            <li><strong>CDN de streaming:</strong> El servidor que entrega el contenido multimedia (CDN) se determina dinámicamente según la infraestructura del proveedor</li>
+            <li><strong>Guía de programación (EPG):</strong> Los datos de guía electrónica de programación provienen de los sistemas del proveedor</li>
+        </ul>
+
+        <h3>4.2. Responsabilidad del Proveedor</h3>
+        <p>El <strong>proveedor de contenido</strong> es responsable exclusivo de:</p>
+        <ul>
+            <li>La infraestructura técnica que entrega el contenido (API, CDN, servidores)</li>
+            <li>La seguridad de las conexiones a sus servicios (HTTP/HTTPS)</li>
+            <li>La legalidad y licencias del contenido que ofrece</li>
+            <li>El cumplimiento normativo aplicable a su servicio</li>
+            <li>La categorización y control parental del contenido para menores</li>
+        </ul>
+
+        <h2>5. Uso de la Información</h2>
         <p>La información recopilada se utiliza exclusivamente para:</p>
         <ul>
             <li><strong>Funcionalidad de la aplicación:</strong> Mantener la sesión, recordar preferencias, permitir "Continuar viendo", gestionar perfiles</li>
@@ -233,27 +274,19 @@
             <li><strong>Soporte técnico:</strong> Identificar problemas de compatibilidad</li>
         </ul>
 
-        <h2>5. Almacenamiento de Datos</h2>
-        <h3>5.1. Almacenamiento Local</h3>
-        <p>Todos los datos se almacenan <strong>localmente en el dispositivo</strong> del usuario. Los datos nunca salen del dispositivo, excepto para autenticación con el servidor de contenido.</p>
-
-        <h3>5.2. Servidor</h3>
-        <p>Repromax se conecta exclusivamente a:</p>
+        <h2>6. Almacenamiento de Datos</h2>
+        <h3>6.1. Almacenamiento Local</h3>
+        <p>Todos los datos personales se almacenan <strong>localmente en el dispositivo</strong> del usuario utilizando:</p>
         <ul>
-            <li><strong>API de contenido:</strong> <code>https://api.repromax.com</code> - Para obtener listas de canales y EPG</li>
-            <li><strong>CDN de contenido:</strong> Cloudflare R2 - Para streaming de video/audio</li>
+            <li><strong>SharedPreferences</strong> (Android)</li>
+            <li><strong>UserDefaults</strong> (iOS)</li>
+            <li><strong>LocalStorage</strong> (Web/Desktop)</li>
         </ul>
-        <p>El servidor <strong>NO almacena</strong> datos personales del usuario.</p>
 
-        <h2>6. Compartición de Datos</h2>
-        <p>Repromax <strong>NO comparte datos de usuarios con terceros</strong>.</p>
-        <p><strong>No utilizamos:</strong></p>
-        <ul>
-            <li><span class="cross">❌</span> Servicios de análisis (Google Analytics, Firebase Analytics)</li>
-            <li><span class="cross">❌</span> Servicios de publicidad (AdMob)</li>
-            <li><span class="cross">❌</span> Servicios de seguimiento (tracking)</li>
-            <li><span class="cross">❌</span> Redes sociales para autenticación</li>
-        </ul>
+        <p><strong>Los datos personales nunca salen del dispositivo del usuario.</strong> La aplicación no transmite datos personales a servidores externos, salvo lo estrictamente necesario para autenticación con el proveedor de contenido cuando este lo requiera.</p>
+
+        <h3>6.2. Servidores y CDN</h3>
+        <p>Repromax se conecta exclusivamente para obtener contenido multimedia a los servidores configurados por el proveedor seleccionado. La aplicación <strong>NO almacena</strong> datos personales del usuario en servidores externos.</p>
 
         <h2>7. Seguridad de Datos</h2>
         <table>
@@ -266,24 +299,49 @@
             <tbody>
                 <tr>
                     <td>Almacenamiento local</td>
-                    <td>Los datos permanecen en el dispositivo del usuario</td>
+                    <td>Los datos personales permanecen en el dispositivo del usuario</td>
                 </tr>
                 <tr>
-                    <td>Encriptación en tránsito</td>
-                    <td>Conexiones HTTPS/TLS para todo el tráfico de red</td>
+                    <td>Sin tracking</td>
+                    <td>No utilizamos servicios de seguimiento ni analytics</td>
+                </tr>
+                <tr>
+                    <td>Mínimos datos necesarios</td>
+                    <td>Solo recopilamos datos estrictamente necesarios para la funcionalidad</td>
                 </tr>
                 <tr>
                     <td>Sin almacenamiento en servidor</td>
                     <td>Los datos personales no se transmiten a servidores externos</td>
                 </tr>
-                <tr>
-                    <td>Mínimos datos necesarios</td>
-                    <td>Solo recopilamos datos estrictamente necesarios</td>
-                </tr>
             </tbody>
         </table>
 
-        <h2>8. Derechos del Usuario</h2>
+        <h3>7.1. Seguridad en Transmisiones de Contenido</h3>
+
+        <div class="warning-box">
+            <strong>⚠️ Importante sobre protocolos de transmisión:</strong>
+        </div>
+
+        <p>La seguridad de las transmisiones de contenido multimedia (streaming) depende de la infraestructura del proveedor de contenido:</p>
+
+        <ul>
+            <li><strong>Cuando el proveedor utiliza HTTPS:</strong> El contenido se transmite de forma encriptada y segura</li>
+            <li><strong>Cuando el proveedor utiliza HTTP:</strong> El contenido se transmite sin encriptación. Repromax no controla esta decisión, ya que depende exclusivamente de la infraestructura del proveedor</li>
+        </ul>
+
+        <p><strong>Aclaración importante:</strong> El contenido multimedia streaming (video/audio) no contiene datos personales del usuario. Los datos personales del usuario se mantienen siempre en el dispositivo y no se transmiten.</p>
+
+        <h2>8. Compartición de Datos</h2>
+        <p>Repromax <strong>NO comparte datos de usuarios con terceros</strong>.</p>
+        <p><strong>No utilizamos:</strong></p>
+        <ul>
+            <li><span class="cross">❌</span> Servicios de análisis (Google Analytics, Firebase Analytics)</li>
+            <li><span class="cross">❌</span> Servicios de publicidad (AdMob)</li>
+            <li><span class="cross">❌</span> Servicios de seguimiento (tracking)</li>
+            <li><span class="cross">❌</span> Redes sociales para autenticación</li>
+        </ul>
+
+        <h2>9. Derechos del Usuario</h2>
         <table class="rights-table">
             <thead>
                 <tr>
@@ -311,19 +369,130 @@
             </tbody>
         </table>
 
-        <h2>9. Menores de Edad</h2>
-        <p>Repromax no recopila información personal de menores de edad. La aplicación puede ser utilizada por usuarios de todas las edades, ya que:</p>
+        <h2>10. Menores de Edad y Control Parental</h2>
+
+        <div class="info-box">
+            <strong>👨‍👩‍👧‍👦 Protección de menores:</strong> Repromax implementa controles parentales cuando el proveedor lo soporta.
+        </div>
+
+        <h3>10.1. Creación de Perfiles con Edad</h3>
+        <p>Repromax permite la creación de perfiles de usuario con especificación de edad:</p>
         <ul>
-            <li>No se solicita registro con datos personales</li>
-            <li>No se recopila información sensible</li>
-            <li>No hay interacciones sociales ni chat</li>
-            <li>No hay compras integradas</li>
+            <li>La <strong>posibilidad de especificar edad</strong> depende de la configuración del proveedor de contenido</li>
+            <li>Cuando el proveedor lo permite, los padres/tutores pueden crear perfiles para menores</li>
+            <li>La edad indicada se utiliza exclusivamente para aplicar controles de contenido</li>
         </ul>
 
-        <h2>10. Cambios en la Política</h2>
+        <h3>10.2. Filtrado de Contenido para Menores</h3>
+        <p><strong>Responsabilidad del proveedor:</strong></p>
+        <ul>
+            <li>La <strong>categorización del contenido</strong> (apropiado para diferentes edades) es responsabilidad exclusiva del proveedor de contenido</li>
+            <li>El <strong>filtrado de contenido</strong> se basa en la configuración y políticas del proveedor</li>
+            <li>Repromax aplica las restricciones que el proveedor define según la edad del perfil</li>
+        </ul>
+
+        <h3>10.3. Sin Recopilación de Datos de Menores</h3>
+        <p>Repromax no recopila información personal de menores de edad más allá de lo necesario para:</p>
+        <ul>
+            <li>Personalizar la interfaz con un nombre y avatar</li>
+            <li>Aplicar los controles parentales configurados por el proveedor</li>
+        </ul>
+
+        <p><strong>No hay:</strong></p>
+        <ul>
+            <li><span class="cross">❌</span> Registro con datos personales sensibles</li>
+            <li><span class="cross">❌</span> Interacciones sociales ni chat</li>
+            <li><span class="cross">❌</span> Compras integradas</li>
+            <li><span class="cross">❌</span> Compartición de datos de menores con terceros</li>
+        </ul>
+
+        <h2>11. Cambios en la Política</h2>
         <p>Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será notificado a través de actualización de esta página o notificación en la aplicación.</p>
 
-        <h2>11. Legislación Aplicable</h2>
+        <h2>11.1. Próximos Cambios en la Arquitectura</h2>
+
+        <div class="warning-box">
+            <strong>🔄 Actualización próxima del modelo de proveedores:</strong>
+        </div>
+
+        <p>Informamos a nuestros usuarios que estamos trabajando en una actualización de nuestra arquitectura que modificará la forma en que Repromax se conecta con los proveedores de contenido.</p>
+
+        <h3>Cómo funcionará el nuevo modelo:</h3>
+        <ul>
+            <li>La aplicación solicitará al usuario un <strong>código de proveedor</strong></li>
+            <li>Este código se enviará a nuestros servidores de Repromax</li>
+            <li>Nuestro servidor devolverá la <strong>URL de la API</strong> que la app debe consumir</li>
+            <li>A partir de ese momento, la app se conectará directamente al proveedor</li>
+        </ul>
+
+        <h3>Implicaciones para la privacidad:</h3>
+
+        <div class="info-box">
+            <strong>📊 Datos que recopilarán los proveedores:</strong>
+        </div>
+
+        <p>Cuando este nuevo modelo esté operativo, los <strong>proveedores de contenido</strong> podrán recopilar la misma información que Repromax recopila actualmente:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>Por qué lo necesita el proveedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ID de Dispositivo</strong></td>
+                    <td>Identificar el dispositivo y mantener sesiones activas</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfiles de Usuario</strong></td>
+                    <td>Personalizar contenido según el perfil y aplicar controles parentales</td>
+                </tr>
+                <tr>
+                    <td><strong>Preferencias</strong></td>
+                    <td>Recordar configuraciones entre sesiones</td>
+                </tr>
+                <tr>
+                    <td><strong>Historial de Reproducción</strong></td>
+                    <td>Proporcionar función "Continuar viendo" y recomendaciones</td>
+                </tr>
+                <tr>
+                    <td><strong>Historial de Búsqueda</strong></td>
+                    <td>Mejorar resultados de búsqueda y sugerencias</td>
+                </tr>
+                <tr>
+                    <td><strong>Datos de Dispositivo</strong></td>
+                    <td>Optimizar contenido según el tipo de dispositivo</td>
+                </tr>
+                <tr>
+                    <td><strong>Estado de Conexión</strong></td>
+                    <td>Gestionar calidad de streaming según conexión</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Lo que NO cambiará:</h3>
+        <ul>
+            <li><strong>Repromax no almacenará</strong> datos personales de usuarios en sus servidores</li>
+            <li><strong>Repromax no compartirá</strong> datos con terceros distintos al proveedor seleccionado</li>
+            <li><strong>Repromax no utilizará</strong> analytics, publicidad ni tracking</li>
+        </ul>
+
+        <h3>Responsabilidad:</h3>
+        <p>Con este nuevo modelo, los <strong>proveedores de contenido</strong> serán responsables de:</p>
+        <ul>
+            <li>El almacenamiento seguro de los datos de usuario</li>
+            <li>El cumplimiento normativo (RGPD, COPPA, etc.)</li>
+            <li>La aplicación de sus propias políticas de privacidad</li>
+        </ul>
+
+        <p><strong>Cada proveedor tendrá su propia política de privacidad</strong> que el usuario deberá revisar al utilizar sus servicios.</p>
+
+        <h3>¿Cuándo se implementará?</h3>
+        <p>Esta actualización se implementará en una versión futura de Repromax. Antes del lanzamiento, esta política de privacidad se actualizará para reflejar estos cambios.</p>
+
+        <h2>13. Legislación Aplicable</h2>
         <p>Esta política se rige por la legislación española y europea:</p>
         <ul>
             <li><strong>RGPD</strong> (Reglamento General de Protección de Datos) - UE 2016/679</li>
@@ -332,11 +501,12 @@
 
         <div class="contact-box">
             <strong>Responsable del tratamiento:</strong><br>
-            Empresa: UmoFour<br>
-            Contacto: <a href="mailto:privacidad@umofour.com">privacidad@umofour.com</a>
+            Aplicación: Repromax<br>
+            Desarrollador: UmoFour<br>
+            Contacto: <a href="mailto:info@repromax.com">info@repromax.com</a>
         </div>
 
-        <h2>12. Conformidad con Google Play</h2>
+        <h2>14. Conformidad con Google Play</h2>
         <p>Esta política cumple con los requisitos de <strong>Google Play Developer Policy Center</strong>:</p>
         <ul>
             <li><span class="check">✅</span> Declara todos los datos recopilados</li>
@@ -345,10 +515,11 @@
             <li><span class="check">✅</span> Especifica con quién se comparten los datos</li>
             <li><span class="check">✅</span> Indica cómo se protegen los datos</li>
             <li><span class="check">✅</span> Describe los derechos del usuario</li>
+            <li><span class="check">✅</span> Declara políticas para menores de edad</li>
         </ul>
 
         <div class="footer">
-            <p><strong>Versión:</strong> 1.0 | <strong>Fecha de entrada en vigor:</strong> 9 de junio de 2026</p>
+            <p><strong>Versión:</strong> 2.1 | <strong>Fecha de entrada en vigor:</strong> 9 de junio de 2026</p>
         </div>
     </div>
 </body>
