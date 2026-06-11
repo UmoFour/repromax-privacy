@@ -291,8 +291,16 @@
                     <td><code>ACCESS_NETWORK_STATE</code></td>
                     <td>Verificar conectividad para optimizar la reproducción</td>
                 </tr>
+                <tr>
+                    <td><code>BIND_VPN_SERVICE</code></td>
+                    <td>Establecer túnel VPN WireGuard cuando el proveedor lo soporta (ver sección 4)</td>
+                </tr>
             </tbody>
         </table>
+
+        <div class="info-box">
+            <strong>📋 Permisos condicionales:</strong> El permiso <code>BIND_VPN_SERVICE</code> solo se solicita cuando el proveedor de contenido soporta VPN. Si el proveedor no soporta VPN, este permiso nunca se solicita.
+        </div>
 
         <h3>3.1. Control por Voz</h3>
         <p>Repromax incluye funcionalidad de <strong>control por voz</strong> exclusivamente para dictado de texto en campos de búsqueda:</p>
@@ -384,27 +392,27 @@
             <tbody>
                 <tr>
                     <td><strong>Control del usuario</strong></td>
-                    <td>La función VPN es completamente opcional y bajo control del usuario</td>
+                    <td>Depende del caso de uso: opcional (control total) u obligatoria (sin control). Ver sección 4.3 para detalles.</td>
                 </tr>
                 <tr>
                     <td><strong>Sin registro de actividad</strong></td>
-                    <td>No se registra ni almacena el tráfico que pasa por la VPN</td>
+                    <td>Repromax no registra ni almacena el tráfico. El proveedor puede aplicar sus propias políticas de registro.</td>
                 </tr>
                 <tr>
                     <td><strong>Sin seguimiento</strong></td>
-                    <td>No se realiza seguimiento de las actividades del usuario a través de la VPN</td>
+                    <td>Repromax no realiza seguimiento. El proveedor es responsable de sus políticas de seguimiento.</td>
                 </tr>
                 <tr>
                     <td><strong>Sin logs de conexión</strong></td>
-                    <td>No se mantienen registros de cuándo ni cómo se utiliza la VPN</td>
+                    <td>Repromax no mantiene registros. El proveedor puede registrar conexiones según su política.</td>
                 </tr>
                 <tr>
                     <td><strong>Cifrado de extremo a extremo</strong></td>
                     <td>Todo el tráfico está cifrado mediante protocolos criptográficos estándar de la industria</td>
                 </tr>
                 <tr>
-                    <td><strong>Servidores propios</strong></td>
-                    <td>La infraestructura VPN es gestionada directamente por Repromax/UmoFour</td>
+                    <td><strong>Infraestructura VPN</strong></td>
+                    <td>Cada proveedor gestiona sus propios servidores VPN según su infraestructura</td>
                 </tr>
             </tbody>
         </table>
@@ -412,9 +420,9 @@
         <h3>4.5. Funcionamiento Técnico</h3>
         <p>WireGuard en Repromax funciona de la siguiente manera:</p>
         <ul>
-            <li><strong>Túnel cifrado:</strong> Se establece un túnel VPN entre el dispositivo y nuestros servidores</li>
+            <li><strong>Túnel cifrado:</strong> Se establece un túnel VPN entre el dispositivo del usuario y los servidores VPN del proveedor de contenido</li>
             <li><strong>Enrutamiento transparente:</strong> El tráfico de contenido se dirige a través del túnel de forma transparente para el usuario</li>
-            <li><strong>Servidor de salida:</strong> Nuestro servidor actúa como punto de salida hacia los proveedores de contenido</li>
+            <li><strong>Servidor de salida:</strong> Los servidores VPN del proveedor actúan como punto de salida hacia los servicios de contenido</li>
             <li><strong>Aislamiento de tráfico:</strong> El tráfico VPN se separa del resto del tráfico del dispositivo cuando es necesario</li>
         </ul>
 
@@ -494,17 +502,38 @@
             <li><strong>Guía de programación (EPG):</strong> Los datos de guía electrónica de programación provienen de los sistemas del proveedor</li>
         </ul>
 
-        <h3>5.2. Integración con VPN WireGuard</h3>
-        <p>Cuando el usuario activa la función VPN, el tráfico hacia los proveedores de contenido puede enrutarse a través del túnel WireGuard para mayor privacidad y seguridad:</p>
+        <h3>5.2. Integración con VPN WireGuard según el Proveedor</h3>
+        <p>La integración de VPN WireGuard con los proveedores de contenido funciona según el caso de uso configurado por cada proveedor:</p>
+
+        <h4>Caso 1: Proveedor sin soporte VPN</h4>
         <ul>
-            <li>La conexión VPN es <strong>complementaria</strong> y no afecta la funcionalidad base de Repromax</li>
-            <li>El usuario puede elegir qué tipo de tráfico (streaming, API, EPG) pasa por la VPN</li>
-            <li>La VPN no modifica ni altera el contenido; solo cifra y protege el transporte</li>
-            <li>El proveedor de contenido recibe las conexiones desde nuestros servidores VPN, no directamente desde el dispositivo del usuario</li>
+            <li>El tráfico se conecta directamente desde el dispositivo del usuario al proveedor</li>
+            <li>No se utiliza VPN en ningún momento</li>
+            <li>No se solicitan permisos de VPN</li>
+        </ul>
+
+        <h4>Caso 2: Proveedor con VPN opcional</h4>
+        <ul>
+            <li>El proveedor indica que soporta VPN cuando el usuario accede al sistema</li>
+            <li>El usuario decide si activar o desactivar la VPN</li>
+            <li>Si está activa: el tráfico se enruta a través del túnel WireGuard</li>
+            <li>Si está inactiva: el tráfico conecta directamente al proveedor</li>
+        </ul>
+
+        <h4>Caso 3: Proveedor con VPN obligatoria</h4>
+        <ul>
+            <li>El proveedor indica que solo funciona a través de VPN</li>
+            <li>Repromax establece automáticamente el túnel WireGuard</li>
+            <li>Todo el tráfico pasa obligatoriamente a través de la VPN</li>
+            <li>El usuario no puede desactivar la VPN (requisito del proveedor)</li>
         </ul>
 
         <div class="info-box">
-            <strong>🔐 Privacidad mejorada:</strong> Al utilizar VPN, la dirección IP real del usuario queda oculta para los proveedores de contenido, protegiendo aún más su identidad y ubicación.
+            <strong>🔐 Privacidad mejorada:</strong> Cuando la VPN está activa (opcional u obligatoria), la dirección IP real del usuario queda oculta para los proveedores de contenido, protegiendo su identidad y ubicación.
+        </div>
+
+        <div class="warning-box">
+            <strong>⚠️ Transparencia:</strong> Repromax indica claramente al usuario qué caso de uso aplica para cada proveedor (sin VPN, con VPN opcional, o con VPN obligatoria) antes de que el usuario comience a usar el servicio.
         </div>
 
         <h3>5.3. Responsabilidad del Proveedor</h3>
