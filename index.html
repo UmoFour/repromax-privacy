@@ -199,7 +199,7 @@
 <body>
     <div class="container">
         <h1>Política de Privacidad - Repromax</h1>
-        <p class="update-date">Última actualización: 9 de junio de 2026</p>
+        <p class="update-date">Última actualización: 11 de junio de 2026</p>
 
         <div class="contact-box">
             <strong>Contacto:</strong> Para cualquier pregunta sobre privacidad, contacte en: <a href="mailto:info@repromax.com">info@repromax.com</a>
@@ -556,17 +556,87 @@
 
         <h2>7. Almacenamiento de Datos</h2>
         <h3>7.1. Almacenamiento Local</h3>
-        <p>Todos los datos personales se almacenan <strong>localmente en el dispositivo</strong> del usuario utilizando:</p>
+        <p>Los datos del usuario se almacenan <strong>localmente en el dispositivo</strong> utilizando:</p>
         <ul>
             <li><strong>SharedPreferences</strong> (Android)</li>
             <li><strong>UserDefaults</strong> (iOS)</li>
             <li><strong>LocalStorage</strong> (Web/Desktop)</li>
         </ul>
 
-        <p><strong>Los datos personales nunca salen del dispositivo del usuario.</strong> La aplicación no transmite datos personales a servidores externos, salvo lo estrictamente necesario para autenticación con el proveedor de contenido cuando este lo requiera.</p>
+        <h3>7.2. Transmisión de Datos al Proveedor</h3>
+        <p>Para que las funcionalidades esenciales de Repromax funcionen correctamente, ciertos datos se transmiten a los servidores del proveedor de contenido:</p>
 
-        <h3>7.2. Servidores y CDN</h3>
-        <p>Repromax se conecta exclusivamente para obtener contenido multimedia a los servidores configurados por el proveedor seleccionado. La aplicación <strong>NO almacena</strong> datos personales del usuario en servidores externos.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dato</th>
+                    <th>¿Se transmite?</th>
+                    <th>Finalidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Credenciales de autenticación</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Login, identificación del usuario, mantenimiento de sesión</td>
+                </tr>
+                <tr>
+                    <td><strong>ID de dispositivo</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Identificar el dispositivo en diferentes sesiones</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfiles de usuario</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Personalización, controles parentales, sincronización entre dispositivos</td>
+                </tr>
+                <tr>
+                    <td><strong>Preferencias</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Sincronizar configuraciones entre dispositivos</td>
+                </tr>
+                <tr>
+                    <td><strong>Historial de reproducción</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Función "Continuar viendo", reanudar contenido en diferentes dispositivos</td>
+                </tr>
+                <tr>
+                    <td><strong>Historial de búsqueda</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Mejorar resultados de búsqueda, sincronizar entre dispositivos</td>
+                </tr>
+                <tr>
+                    <td><strong>Datos de dispositivo</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Optimizar contenido según tipo de dispositivo y plataforma</td>
+                </tr>
+                <tr>
+                    <td><strong>Estado de conexión</strong></td>
+                    <td>✅ Sí</td>
+                    <td>Gestionar calidad de streaming según conexión</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box">
+            <strong>💡 Importante:</strong> Sin la transmisión de estos datos, funcionalidades esenciales como el login, la sincronización entre dispositivos y la función "Continuar viendo" no serían posibles.
+        </div>
+
+        <h3>7.3. Responsabilidad del Proveedor sobre los Datos</h3>
+        <p>Una vez los datos se transmiten al proveedor de contenido:</p>
+        <ul>
+            <li><strong>El proveedor es responsable</strong> del almacenamiento y seguridad de los datos recibidos</li>
+            <li><strong>El proveedor puede aplicar</strong> sus propias políticas de retención y eliminación de datos</li>
+            <li><strong>El proveedor determina</strong> cómo se utilizan los datos para mejorar su servicio</li>
+            <li><strong>Repromax no controla</strong> los servidores ni las políticas de datos del proveedor</li>
+        </ul>
+
+        <div class="warning-box">
+            <strong>⚠️ Política de privacidad del proveedor:</strong> Cada proveedor de contenido tiene su propia política de privacidad que rige cómo trata los datos que recibe. Recomendamos revisar la política de privacidad de cada proveedor que utilice.
+        </div>
+
+        <h3>7.4. Servidores de Repromax</h3>
+        <p><strong>Actualmente</strong>, Repromax no almacena datos personales del usuario en sus propios servidores. La aplicación actúa como intermediario entre el usuario y el proveedor de contenido.</p>
 
         <h2>8. Seguridad de Datos</h2>
         <table>
@@ -579,19 +649,23 @@
             <tbody>
                 <tr>
                     <td>Almacenamiento local</td>
-                    <td>Los datos personales permanecen en el dispositivo del usuario</td>
+                    <td>Los datos se almacenan localmente para acceso rápido y funcionamiento offline parcial</td>
                 </tr>
                 <tr>
                     <td>Sin tracking</td>
-                    <td>No utilizamos servicios de seguimiento ni analytics</td>
+                    <td>Repromax no utiliza servicios de seguimiento ni analytics de terceros</td>
                 </tr>
                 <tr>
                     <td>Mínimos datos necesarios</td>
-                    <td>Solo recopilamos datos estrictamente necesarios para la funcionalidad</td>
+                    <td>Solo se transmiten datos estrictamente necesarios para funcionalidades esenciales</td>
                 </tr>
                 <tr>
-                    <td>Sin almacenamiento en servidor</td>
-                    <td>Los datos personales no se transmiten a servidores externos</td>
+                    <td>Transmisión al proveedor</td>
+                    <td>Los datos necesarios se transmiten al proveedor para login, sincronización y funcionalidades básicas</td>
+                </tr>
+                <tr>
+                    <td>Sin almacenamiento en servidor Repromax</td>
+                    <td>Repromax no almacena datos personales en sus propios servidores</td>
                 </tr>
             </tbody>
         </table>
@@ -609,16 +683,30 @@
             <li><strong>Cuando el proveedor utiliza HTTP:</strong> El contenido se transmite sin encriptación. Repromax no controla esta decisión, ya que depende exclusivamente de la infraestructura del proveedor</li>
         </ul>
 
-        <p><strong>Aclaración importante:</strong> El contenido multimedia streaming (video/audio) no contiene datos personales del usuario. Los datos personales del usuario se mantienen siempre en el dispositivo y no se transmiten.</p>
+        <p><strong>Aclaración importante:</strong> El contenido multimedia streaming (video/audio) se transmite a través de los servidores del proveedor. Los datos de identidad del usuario pueden estar asociados a su cuenta en el proveedor para funcionalidades como "Continuar viendo".</p>
 
         <h2>9. Compartición de Datos</h2>
-        <p>Repromax <strong>NO comparte datos de usuarios con terceros</strong>.</p>
-        <p><strong>No utilizamos:</strong></p>
+        <h3>9.1. Compartición con el Proveedor de Contenido</h3>
+        <p>Repromax <strong>transmite datos al proveedor de contenido</strong> para que las funcionalidades esenciales funcionen correctamente:</p>
+        <ul>
+            <li><strong>Login y autenticación:</strong> Credenciales necesarias para identificar al usuario</li>
+            <li><strong>Sincronización entre dispositivos:</strong> Perfiles, preferencias, historial</li>
+            <li><strong>Funcionalidades básicas:</strong> "Continuar viendo", historial de búsqueda</li>
+            <li><strong>Optimización:</strong> Tipo de dispositivo, plataforma, estado de conexión</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>📦 Datos transmitidos:</strong> Ver la tabla detallada en la sección 7.2 para el listado completo de datos transmitidos al proveedor y sus finalidades.
+        </div>
+
+        <h3>9.2. Sin Compartición con Otros Terceros</h3>
+        <p>Repromax <strong>NO comparte datos con otros terceros</strong> distintos al proveedor de contenido:</p>
         <ul>
             <li><span class="cross">❌</span> Servicios de análisis (Google Analytics, Firebase Analytics)</li>
             <li><span class="cross">❌</span> Servicios de publicidad (AdMob)</li>
             <li><span class="cross">❌</span> Servicios de seguimiento (tracking)</li>
             <li><span class="cross">❌</span> Redes sociales para autenticación</li>
+            <li><span class="cross">❌</span> Compañías de datos de terceros</li>
         </ul>
 
         <h2>10. Derechos del Usuario</h2>
@@ -799,7 +887,7 @@
         </ul>
 
         <div class="footer">
-            <p><strong>Versión:</strong> 2.3 | <strong>Fecha de entrada en vigor:</strong> 9 de junio de 2026</p>
+            <p><strong>Versión:</strong> 2.4 | <strong>Fecha de entrada en vigor:</strong> 11 de junio de 2026</p>
         </div>
     </div>
 </body>
