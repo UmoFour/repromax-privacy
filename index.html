@@ -315,13 +315,106 @@
             <li><span class="cross">❌</span> Almacenamiento externo</li>
         </ul>
 
-        <h2>4. Modelo de Proveedores de Contenido</h2>
+        <h2>4. Tecnología de Privacidad WireGuard</h2>
+
+        <div class="info-box">
+            <strong>🔒 Protección de privacidad mediante VPN interna:</strong> Repromax incorpora tecnología WireGuard para ofrecer una capa adicional de privacidad y seguridad a sus usuarios.
+        </div>
+
+        <h3>4.1. ¿Qué es WireGuard en Repromax?</h3>
+        <p><strong>WireGuard</strong> es un protocolo de VPN moderno, eficiente y de código abierto que Repromax puede utilizar internamente para:</p>
+        <ul>
+            <li><strong>Cifrar el tráfico de red</strong> entre el dispositivo y los servidores de contenido</li>
+            <li><strong>Proteger la privacidad</strong> del usuario ante posibles interceptaciones de red</li>
+            <li><strong>Mejorar la seguridad</strong> en conexiones a redes Wi-Fi públicas o no confiables</li>
+            <li><strong>Garantizar la confidencialidad</strong> de las comunicaciones con los proveedores de contenido</li>
+        </ul>
+
+        <h3>4.2. Características de Privacidad</h3>
+        <p>El uso de WireGuard en Repromax se rige por los siguientes principios:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Aspecto</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Control del usuario</strong></td>
+                    <td>La función VPN es completamente opcional y bajo control del usuario</td>
+                </tr>
+                <tr>
+                    <td><strong>Sin registro de actividad</strong></td>
+                    <td>No se registra ni almacena el tráfico que pasa por la VPN</td>
+                </tr>
+                <tr>
+                    <td><strong>Sin seguimiento</strong></td>
+                    <td>No se realiza seguimiento de las actividades del usuario a través de la VPN</td>
+                </tr>
+                <tr>
+                    <td><strong>Sin logs de conexión</strong></td>
+                    <td>No se mantienen registros de cuándo ni cómo se utiliza la VPN</td>
+                </tr>
+                <tr>
+                    <td><strong>Cifrado de extremo a extremo</strong></td>
+                    <td>Todo el tráfico está cifrado mediante protocolos criptográficos estándar de la industria</td>
+                </tr>
+                <tr>
+                    <td><strong>Servidores propios</strong></td>
+                    <td>La infraestructura VPN es gestionada directamente por Repromax/UmoFour</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>4.3. Funcionamiento Técnico</h3>
+        <p>WireGuard en Repromax funciona de la siguiente manera:</p>
+        <ul>
+            <li><strong>Túnel cifrado:</strong> Se establece un túnel VPN entre el dispositivo y nuestros servidores</li>
+            <li><strong>Enrutamiento transparente:</strong> El tráfico de contenido se dirige a través del túnel de forma transparente para el usuario</li>
+            <li><strong>Servidor de salida:</strong> Nuestro servidor actúa como punto de salida hacia los proveedores de contenido</li>
+            <li><strong>Aislamiento de tráfico:</strong> El tráfico VPN se separa del resto del tráfico del dispositivo cuando es necesario</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>🛡️ Compromiso de privacidad:</strong> Repromax utiliza WireGuard exclusivamente para proteger la privacidad y seguridad de sus usuarios. No se utiliza para evadir restricciones geográficas, eludir regulaciones ni con ningún otro propósito que no sea la legítima protección de la privacidad del usuario.
+        </div>
+
+        <h3>4.4. Permisos de VPN</h3>
+        <p>Cuando el usuario activa la función VPN, Repromax solicita los siguientes permisos:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Permiso</th>
+                    <th>Finalidad</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>BIND_VPN_SERVICE</code></td>
+                    <td>Establecer el túnel VPN cifrado para proteger el tráfico</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p><strong>Nota importante:</strong> Estos permisos <strong>solo se solicitan</strong> cuando el usuario activa explícitamente la función VPN. La aplicación funciona perfectamente sin utilizar la VPN si el usuario prefiere no usarla.</p>
+
+        <h3>4.5. Control del Usuario sobre la VPN</h3>
+        <p>El usuario tiene control total sobre el uso de la función VPN:</p>
+        <ul>
+            <li><span class="check">✅</span> Activación y desactivación en cualquier momento desde la configuración</li>
+            <li><span class="check">✅</span> Indicador visual claro cuando la VPN está activa</li>
+            <li><span class="check">✅</span> Posibilidad de configurar reglas de qué tráfico pasa por la VPN</li>
+            <li><span class="check">✅</span> Información transparente sobre el servidor VPN al que se conecta</li>
+        </ul>
+
+        <h2>5. Modelo de Proveedores de Contenido</h2>
 
         <div class="info-box">
             <strong>⚙️ Arquitectura de Repromax:</strong> La aplicación se conecta a diferentes proveedores de contenido configurados por el usuario. La infraestructura de cada proveedor es independiente y responsabilidad exclusiva del mismo.
         </div>
 
-        <h3>4.1. Conexión a Servicios Externos</h3>
+        <h3>5.1. Conexión a Servicios Externos</h3>
         <p>Repromax funciona como un cliente reproductor que se conecta a servicios de terceros:</p>
         <ul>
             <li><strong>API de contenido:</strong> La URL de la API se configura en tiempo de ejecución según el proveedor seleccionado por el usuario</li>
@@ -329,7 +422,20 @@
             <li><strong>Guía de programación (EPG):</strong> Los datos de guía electrónica de programación provienen de los sistemas del proveedor</li>
         </ul>
 
-        <h3>4.2. Responsabilidad del Proveedor</h3>
+        <h3>5.2. Integración con VPN WireGuard</h3>
+        <p>Cuando el usuario activa la función VPN, el tráfico hacia los proveedores de contenido puede enrutarse a través del túnel WireGuard para mayor privacidad y seguridad:</p>
+        <ul>
+            <li>La conexión VPN es <strong>complementaria</strong> y no afecta la funcionalidad base de Repromax</li>
+            <li>El usuario puede elegir qué tipo de tráfico (streaming, API, EPG) pasa por la VPN</li>
+            <li>La VPN no modifica ni altera el contenido; solo cifra y protege el transporte</li>
+            <li>El proveedor de contenido recibe las conexiones desde nuestros servidores VPN, no directamente desde el dispositivo del usuario</li>
+        </ul>
+
+        <div class="info-box">
+            <strong>🔐 Privacidad mejorada:</strong> Al utilizar VPN, la dirección IP real del usuario queda oculta para los proveedores de contenido, protegiendo aún más su identidad y ubicación.
+        </div>
+
+        <h3>5.3. Responsabilidad del Proveedor</h3>
         <p>El <strong>proveedor de contenido</strong> es responsable exclusivo de:</p>
         <ul>
             <li>La infraestructura técnica que entrega el contenido (API, CDN, servidores)</li>
@@ -339,7 +445,7 @@
             <li>La categorización y control parental del contenido para menores</li>
         </ul>
 
-        <h2>5. Uso de la Información</h2>
+        <h2>6. Uso de la Información</h2>
         <p>La información recopilada se utiliza exclusivamente para:</p>
         <ul>
             <li><strong>Funcionalidad de la aplicación:</strong> Mantener la sesión, recordar preferencias, permitir "Continuar viendo", gestionar perfiles</li>
@@ -347,8 +453,8 @@
             <li><strong>Soporte técnico:</strong> Identificar problemas de compatibilidad</li>
         </ul>
 
-        <h2>6. Almacenamiento de Datos</h2>
-        <h3>6.1. Almacenamiento Local</h3>
+        <h2>7. Almacenamiento de Datos</h2>
+        <h3>7.1. Almacenamiento Local</h3>
         <p>Todos los datos personales se almacenan <strong>localmente en el dispositivo</strong> del usuario utilizando:</p>
         <ul>
             <li><strong>SharedPreferences</strong> (Android)</li>
@@ -358,10 +464,10 @@
 
         <p><strong>Los datos personales nunca salen del dispositivo del usuario.</strong> La aplicación no transmite datos personales a servidores externos, salvo lo estrictamente necesario para autenticación con el proveedor de contenido cuando este lo requiera.</p>
 
-        <h3>6.2. Servidores y CDN</h3>
+        <h3>7.2. Servidores y CDN</h3>
         <p>Repromax se conecta exclusivamente para obtener contenido multimedia a los servidores configurados por el proveedor seleccionado. La aplicación <strong>NO almacena</strong> datos personales del usuario en servidores externos.</p>
 
-        <h2>7. Seguridad de Datos</h2>
+        <h2>8. Seguridad de Datos</h2>
         <table>
             <thead>
                 <tr>
@@ -389,7 +495,7 @@
             </tbody>
         </table>
 
-        <h3>7.1. Seguridad en Transmisiones de Contenido</h3>
+        <h3>8.1. Seguridad en Transmisiones de Contenido</h3>
 
         <div class="warning-box">
             <strong>⚠️ Importante sobre protocolos de transmisión:</strong>
@@ -404,7 +510,7 @@
 
         <p><strong>Aclaración importante:</strong> El contenido multimedia streaming (video/audio) no contiene datos personales del usuario. Los datos personales del usuario se mantienen siempre en el dispositivo y no se transmiten.</p>
 
-        <h2>8. Compartición de Datos</h2>
+        <h2>9. Compartición de Datos</h2>
         <p>Repromax <strong>NO comparte datos de usuarios con terceros</strong>.</p>
         <p><strong>No utilizamos:</strong></p>
         <ul>
@@ -414,7 +520,7 @@
             <li><span class="cross">❌</span> Redes sociales para autenticación</li>
         </ul>
 
-        <h2>9. Derechos del Usuario</h2>
+        <h2>10. Derechos del Usuario</h2>
         <table class="rights-table">
             <thead>
                 <tr>
@@ -442,13 +548,13 @@
             </tbody>
         </table>
 
-        <h2>10. Menores de Edad y Control Parental</h2>
+        <h2>11. Menores de Edad y Control Parental</h2>
 
         <div class="info-box">
             <strong>👨‍👩‍👧‍👦 Protección de menores:</strong> Repromax implementa controles parentales cuando el proveedor lo soporta.
         </div>
 
-        <h3>10.1. Creación de Perfiles con Edad</h3>
+        <h3>11.1. Creación de Perfiles con Edad</h3>
         <p>Repromax permite la creación de perfiles de usuario con especificación de edad:</p>
         <ul>
             <li>La <strong>posibilidad de especificar edad</strong> depende de la configuración del proveedor de contenido</li>
@@ -456,7 +562,7 @@
             <li>La edad indicada se utiliza exclusivamente para aplicar controles de contenido</li>
         </ul>
 
-        <h3>10.2. Filtrado de Contenido para Menores</h3>
+        <h3>11.2. Filtrado de Contenido para Menores</h3>
         <p><strong>Responsabilidad del proveedor:</strong></p>
         <ul>
             <li>La <strong>categorización del contenido</strong> (apropiado para diferentes edades) es responsabilidad exclusiva del proveedor de contenido</li>
@@ -464,7 +570,7 @@
             <li>Repromax aplica las restricciones que el proveedor define según la edad del perfil</li>
         </ul>
 
-        <h3>10.3. Sin Recopilación de Datos de Menores</h3>
+        <h3>11.3. Sin Recopilación de Datos de Menores</h3>
         <p>Repromax no recopila información personal de menores de edad más allá de lo necesario para:</p>
         <ul>
             <li>Personalizar la interfaz con un nombre y avatar</li>
@@ -479,10 +585,10 @@
             <li><span class="cross">❌</span> Compartición de datos de menores con terceros</li>
         </ul>
 
-        <h2>11. Cambios en la Política</h2>
+        <h2>12. Cambios en la Política</h2>
         <p>Nos reservamos el derecho de actualizar esta política de privacidad. Cualquier cambio será notificado a través de actualización de esta página o notificación en la aplicación.</p>
 
-        <h2>11.1. Próximos Cambios en la Arquitectura</h2>
+        <h2>12.1. Próximos Cambios en la Arquitectura</h2>
 
         <div class="warning-box">
             <strong>🔄 Actualización próxima del modelo de proveedores:</strong>
